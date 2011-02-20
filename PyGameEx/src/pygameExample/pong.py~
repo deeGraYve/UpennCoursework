@@ -1,0 +1,26 @@
+# ball physics and some other parts 
+# borrowed from Arinoid
+   
+
+
+def main:
+    pygame.init()
+    pygame.display.set_caption("Pygame example ball game")
+    backgroundTile=pygame.image.load("background.jpg")
+    backgroundTile.convert()
+    pygame.display.set_mode((500, 400))
+
+    clock = pygame.time.Clock()
+    while 1:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return
+        dirtyRects=[]
+#        dirtyRects.add(ball.update())
+#        dirtyRects.add(paddle.update())
+        pygame.display.update(dirtyRects)
+
+        clock.tick(60)
+
+if __name__ == '__main__':
+    main()

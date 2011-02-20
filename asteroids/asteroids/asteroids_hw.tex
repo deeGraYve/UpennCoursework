@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{fullpage}
+
+
+\title{Asteroids homework}
+
+\begin{document}
+\maketitle
+
+Your assignment is to implement a simplified version of the classic game Asteroids.  A clone of the original is available for you to play with at http://www.neave.com/games/asteroids/ . 
+\begin{itemize}
+\item The playing field is 640x480 with the background \texttt{background.jpg}
+\item
+The player has a ship (\texttt{falcon.jpg}).  When the player presses the left or right arrows, the ship will rotate.  When the player presses the up arrow, the ship will accelerate in the direction it is facing. When the player presses the spacebar, the ship should shoot a shot (\texttt{shot.jpg}) in the direction it is facing.  If the user presses escape, the ship should teleport to a random location which doesn't overlap anything else on the field. If the ship collides with a shot or an asteroid, the game ends.
+\item
+After travelling a certain distance, shots disappear.
+\item
+The ship when simply drifting should tend to slowly decelerate along its current vector.
+\item
+Also on the field are asteroids of two sizes, \texttt{big\_asteroid.jpg} and \texttt{asteroid\_small.jpg}.  All asteroids begin as big asteroids entering the playing field from a random side on a random vector.  Asteroids may overlap one another.  When a big asteroid is hit by a shot, it should break into three small asteroids in any way you like provided the sum of their movement vectors is the movement vector of the original asteroid.  When a small asteroid is hit by a shot, it simply disappears.
+\item
+Whenever anything goes off one edge of the field, it should wrap around to the opposite side.  However, you don't have to show it half on one side and half on the other - it is permissible for it to just jump to the other side when it it halfway off the screen.
+\item Whenever all asteroids have been destroyed, new ones should be introduced.  Each time, one more new asteroid than the previous time should be added.
+\item There are many unspecified parameters above (how much should I accelerate if the player holds down the up arrow for a quarter second?  how fast should a shot move? etc.) You may set them as you please in order to make a satisfying game experience. 
+\item You may replace any of the images I provide with any you like, and may rescale sprites as you prefer.
+\item For extra credit, you may add the enemy space ships from the original (see the clone above and the wikipedia article). Or you could try using \texttt{serenity.jpg} for the player ship and wrestle with the challenges of rotating a non-circular ship. Or you could make up your own enhancements.  Please note any enhancements you make at the beginning of the source code.
+\end{itemize}
+\end{document}

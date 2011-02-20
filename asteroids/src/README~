@@ -1,0 +1,50 @@
+1. Provided files: source file - asteroid.py, documentation - README,
+	image files: asteroid_small.png, background.jpg,
+		     big_asteroid.png, falcon.png, serenity.jpg, shot.png
+2. run: python asteroid.py (has main function)
+3. Object descriptions (for asteroid.py)
+    3.1 Object "Player"
+         a. represents the Ship
+         b. functions:
+		draw - draws object
+		update - updates coordinates of the object
+		shoot - initializes Shot class, "shoots"
+		die - called on collision, stops updating, game over
+    3.2 Object "Shot"
+         a. represents a shot, fired by the player's ship
+         b. functions:
+		draw - draws object
+		update - updates coordinates of the object
+    3.3 Object "Asteroid"
+	 a. represents an asteroid
+	 b. functions:
+		draw - draws object
+		update - updates coordinates of the object
+		span - if Big Asteroid, when it collides - creates 3 small asteroids instead of itself
+		die - functions handles the effect of collision with a shot, if big asteroid - calls span, otherwise - removes the object
+
+    3.4 Object "aGame"
+	 a. main class of the game, starts the game and initializes the other classes, handles collisions and user keystrokes
+	 b. functions:
+		eventLoop - main iteration procedure, determines which objects to update, how to redraw the screen
+		Getinput - listens to keystrokes, determines what function to call depending on a key pressed
+		updateBackground - updates the screen
+		drawBackground - draws the background
+		checkWin - checks if the player has won, i.e. no asteroids left
+		nextLevel - in case checkWin returns true, next level of the game is started
+]		collisionDetect - checks for 3 types of collisions, player-shot, player-asteroid, asteroid-shot
+		teleportPlayer - moves player's ship into a random spot on the screen (with nothing already in that spot, has some moving animation)
+	 
+4. Design Choices
+   (this section should include a description of your game play directions)
+	-most of the constants were chosen after trial and error, i played the game until it felt like the original one
+	-wrapping of the screen is simpler than I planned it to implement (got an email from Ryan saying that it is sufficient enough)
+	-had to work with the images and change them to png and reorient, because of jpg blur (no full transparency) and direction of the ship
+	-had to introduce a special shrunk rectangle - collisionRect, on which collisions are based, since the original rect is a full image and sometimes the collision will occur of the rectangles, but for user it might seem that the object were not close enough for it
+	-shot becomes "lethal" for the ship after it travels more than 20 pix away from it, since the collision would occur during shooting
+	-shot travels the distance of the width of the screen and disappears after that, only 1 shot is allowed at a time, if it collides with an asteroid - it disappears and a player can shoot again
+
+5. Comments, Additional Actions, Special Things (miscellaneous information)
+	I have started rewriting the code so that it has more layers of abstraction by creating a class myFig in new_asteroid.py, but
+	unfortunately haven't finished on time, the class was supposed to initialize a sprite and take care of repeating functions of 
+	drawing and updating
